@@ -10,5 +10,10 @@ public class ProjectContextInstaller : MonoInstaller
         var poolManager = Container.InstantiatePrefabForComponent<PoolManager>(poolManagerPrefab);
         Container.Bind<IPoolManager>().FromInstance(poolManager).AsSingle().NonLazy();
         Container.Bind<GameConfig>().FromInstance(gameConfig).AsSingle();
+
+        var soundObject = new GameObject("SfxSource");
+        var sfxSource = soundObject.AddComponent<AudioSource>();
+        Container.Bind<AudioSource>().FromInstance(sfxSource);
+        Container.Bind<ISoundManager>().To<SoundManager>().AsSingle();
     }
 }
