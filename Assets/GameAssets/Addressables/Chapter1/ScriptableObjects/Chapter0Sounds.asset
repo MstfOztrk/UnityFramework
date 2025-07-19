@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3645902cc53ec79449cbf2ac1a296ba7, type: 3}
   m_Name: Chapter0Sounds
   m_EditorClassIdentifier: 
-  SoundEntries: []
+  SoundEntries:
+  - type: 0
+    clipReference:
+      m_AssetGUID: 265d75f24ffd5c144af3cb89dce01891
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 1

@@ -7,7 +7,6 @@ public class LevelHandler : MonoBehaviour
 {
     [Inject] private ILevelManager levelManager;
     [Inject] private IEventBus eventBus;
-    [Inject] private IChapterManager chapterManager;
  
     private int currentIndex;
     private const string LEVEL_INDEX_KEY = "CurrentLevelIndex";
@@ -36,7 +35,7 @@ public class LevelHandler : MonoBehaviour
 
     private void LoadCurrentLevel()
     {
-        string levelName = " $Level{currentIndex}";
+        string levelName = "Level"+currentIndex;
         Debug.Log($"Loading: {levelName}");
         levelManager.LoadLevelRequest.OnNext(levelName);
     }

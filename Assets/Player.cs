@@ -6,37 +6,40 @@ using Zenject;  // LeanTouch namespace'i
 
 public class Player : MonoBehaviour
 {
-    [Inject] private GameConfig gameConfig;    
-    public Transform root;             
-    private Vector3 targetPosition;   
-    private Vector3 currentVelocity;   
+    [Inject] private GameConfig gameConfig;
+    public Transform root;
+    private Vector3 targetPosition;
+    private Vector3 currentVelocity;
+    private bool isTouching = false;
 
     private void Start()
     {
-        targetPosition = root.position; 
+        targetPosition = root.position;
     }
 
-      private void Update()
+    private void Update()
     {
-        // LeanTouch parmakları al
-        if (LeanTouch.Fingers.Count > 0)
+        LeanFinger activeFinger = null;
+
+        for (int i = 0; i < LeanTouch.Fingers.Count; i++)
         {
-            // İlk parmağı al
-            LeanFinger finger = LeanTouch.Fingers[0];
-
-            // Parmağın delta hareketini al
-            Vector2 touchDelta = finger.ScreenDelta;
-
-            // Sensitivity ile çarpma işlemi
-            float movement = touchDelta.x * gameConfig.sensitivity;
-
-            // Yeni hedef pozisyonu hesapla
-            targetPosition.x += movement * gameConfig.playerSpeed * Time.deltaTime;
-
-            targetPosition.x = Mathf.Clamp(targetPosition.x, gameConfig.clampMin, gameConfig.clampMax);
+            var finger = LeanTouch.Fingers[i];
+            if (finger.IsActive && !finger.StartedOverGui)
+            {
+                activeFinger = finger;
+                break;
+            }
         }
 
-        // Root objesini pürüzsüz bir şekilde hareket ettir (damping ile)
-        root.position = Vector3.SmoothDamp(root.position, targetPosition, ref currentVelocity, 0.2f);
+        float moveDelta = 0f;
+        if (activeFinger.ScreenDelta != Vector2.zero)
+        {
+            moveDelta = activeFinger.ScreenDelta.x * gameConfig.sensitivity * gameConfig.playerSpeed * Time.deltaTime;
+            Vector3 newPosition = root.position;
+            newPosition.x += moveDelta;
+            newPosition.x = Mathf.Clamp(newPosition.x, gameConfig.clampMin, gameConfig.clampMax);
+            root.position = Vector3.Lerp(root.position, newPosition, Time.deltaTime * 10f);
+        }
+
     }
 }

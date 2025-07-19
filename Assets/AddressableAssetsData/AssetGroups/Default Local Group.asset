@@ -21,6 +21,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Level
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 265d75f24ffd5c144af3cb89dce01891
+    m_Address: Assets/GameAssets/Addressables/Chapter1/ScriptableObjects/mixkit-martial-arts-fast-punch-2047.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2e176463ea6817a459d3245bb66a809d
     m_Address: Game
     m_ReadOnly: 0
