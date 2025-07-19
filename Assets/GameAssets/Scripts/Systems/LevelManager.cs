@@ -50,7 +50,7 @@ public class LevelManager : ILevelManager, IDisposable
                 }
             }
 
-            Debug.LogError($"Level Can Not Found: {levelName}");
+            Debug.LogError($"Level Not Found: {levelName}");
         };
     }
 
