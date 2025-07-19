@@ -287,6 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allChapters:
   - {fileID: 11400000, guid: 72784b1acc8ebfb45b00295ad2dbf5e9, type: 2}
+  allSoundConfigs:
+  - {fileID: 11400000, guid: 884e28d073b8cfe42b853f30ebbf5a86, type: 2}
 --- !u!4 &155875620
 Transform:
   m_ObjectHideFlags: 0

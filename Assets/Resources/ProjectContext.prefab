@@ -76,3 +76,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolManagerPrefab: {fileID: 6485354669525265218, guid: c7607e2d217040b409b4ff38389f1e18, type: 3}
+  gameConfig: {fileID: 11400000, guid: 20ed5969b34cc6d45ae2f10dd8cd843a, type: 2}
