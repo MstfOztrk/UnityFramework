@@ -29,5 +29,6 @@ UnityFramework is a small sample project illustrating how to combine reactive pr
 - **Dependency Injection** - Zenject installers define how systems are wired together.
 - **Addressables** - Levels and audio are loaded asynchronously to keep memory usage low.
 - **Service Interfaces** - Managers expose small interfaces so components remain decoupled.
+- **Damage System** - Objects implement `IDamageable` to react to damage. See `docs/IDamageable.md`.
 
 This repo is intended as a minimal showcase of these techniques rather than a complete game.
