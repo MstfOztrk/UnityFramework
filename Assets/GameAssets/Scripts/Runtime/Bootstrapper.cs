@@ -5,14 +5,19 @@ using Zenject;
 public class Bootstrapper : MonoBehaviour
 {
     [SerializeField] private ChapterPoolSO[] allChapters;
+    [SerializeField] private ChapterSoundConfig[] allSoundConfigs;
+
     [Inject] private IPoolManager poolManager;
+    [Inject] private ISoundManager soundManager;
 
     private async void Start()
     {
         int chapterIdx = GetSelectedChapterIndex();
-        var selectedSO = allChapters[chapterIdx];
+        var selectedPoolSO = allChapters[chapterIdx];
+        var selectedSoundSO = allSoundConfigs[chapterIdx];
 
-        await poolManager.InitializeFromChapterSO(selectedSO);
+        soundManager.LoadChapterSounds(selectedSoundSO);
+        await poolManager.InitializeFromChapterSO(selectedPoolSO);
 
         SceneManager.LoadScene("Game");
     }
