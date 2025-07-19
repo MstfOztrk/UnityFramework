@@ -19,15 +19,15 @@ UnityFramework is a small sample project illustrating how to combine reactive pr
 
 ## Directory Layout
 
-- `Assets/GameAssets/` – Core scripts, ScriptableObjects and scenes.
-- `Assets/Plugins/` – Third‑party libraries such as UniRx, Zenject and PrimeTween.
-- `Packages/` – Unity package manifest specifying required packages.
+- `Assets/GameAssets/` - Core scripts, ScriptableObjects and scenes.
+- `Assets/Plugins/` - Third‑party libraries such as UniRx, Zenject and PrimeTween.
+- `Packages/` - Unity package manifest specifying required packages.
 
 ## Technologies & Patterns
 
-- **Reactive Programming** – UniRx observables drive gameplay flow.
-- **Dependency Injection** – Zenject installers define how systems are wired together.
-- **Addressables** – Levels and audio are loaded asynchronously to keep memory usage low.
-- **Service Interfaces** – Managers expose small interfaces so components remain decoupled.
+- **Reactive Programming** - UniRx observables drive gameplay flow.
+- **Dependency Injection** - Zenject installers define how systems are wired together.
+- **Addressables** - Levels and audio are loaded asynchronously to keep memory usage low.
+- **Service Interfaces** - Managers expose small interfaces so components remain decoupled.
 
 This repo is intended as a minimal showcase of these techniques rather than a complete game.
