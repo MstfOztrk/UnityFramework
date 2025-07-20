@@ -28,11 +28,10 @@ public class Shooter : MonoBehaviour
 
         if (projectile is VisualProjectile visual)
         {
-            visual.PoolManager = _poolManager;
             visual.PoolType = projectileType;
         }
 
-        projectile.Initialize(transform.position, direction, projectileSpeed, projectileRange);
+        projectile.Initialize(transform.position, direction, projectileSpeed, projectileRange, 10f);
         _projectileManager.RegisterProjectile(projectile);
     }
 }

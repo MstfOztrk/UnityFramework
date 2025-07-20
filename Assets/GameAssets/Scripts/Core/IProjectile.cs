@@ -12,7 +12,8 @@ public interface IProjectile
     /// <param name="direction">Normalized direction.</param>
     /// <param name="speed">Movement speed.</param>
     /// <param name="maxRange">Maximum travel distance.</param>
-    void Initialize(Vector3 position, Vector3 direction, float speed, float maxRange);
+    /// <param name="damage">Damage dealt on hit.</param>
+    void Initialize(Vector3 position, Vector3 direction, float speed, float maxRange, float damage);
 
     /// <summary>
     /// Called every frame by <see cref="ProjectileManager"/>.

@@ -5,47 +5,42 @@ using UnityEngine;
 /// </summary>
 public class VisualProjectile : MonoBehaviour, IProjectile
 {
-    private Vector3 _direction;
-    private float _speed;
-    private bool _isActive;
-    private float _maxRange;
-    private float _travelled;
-    private float _damage;
-
-    /// <summary>
-    /// Pool manager used to return this instance back to the pool.
-    /// </summary>
-    public IPoolManager PoolManager { get; set; }
+    private Vector3 direction;
+    private float speed;
+    private bool isActive;
+    private float maxRange;
+    private float travelled;
+    private float damage;
 
     /// <summary>
     /// Pool type for this projectile.
     /// </summary>
     public PoolType PoolType { get; set; } = PoolType.Projectile;
 
-    public bool IsActive => _isActive;
-    public float Damage => _damage;
+    public bool IsActive => isActive;
+    public float Damage => damage;
 
-    public void Initialize(Vector3 position, Vector3 direction, float speed, float maxRange)
+    public void Initialize(Vector3 position, Vector3 direction, float speed, float maxRange, float damage)
     {
         transform.position = position;
-        _direction = direction.normalized;
-        _speed = speed;
-        _maxRange = maxRange;
-        _travelled = 0f;
-        _damage = 10f;
-        _isActive = true;
+        this.direction = direction.normalized;
+        this.speed = speed;
+        this.maxRange = maxRange;
+        travelled = 0f;
+        this.damage = damage;
+        isActive = true;
         gameObject.SetActive(true);
     }
 
     public void Tick(float deltaTime)
     {
-        if (!_isActive) return;
+        if (!isActive) return;
 
-        Vector3 movement = _direction * _speed * deltaTime;
+        Vector3 movement = direction * speed * deltaTime;
         transform.position += movement;
-        _travelled += movement.magnitude;
+        travelled += movement.magnitude;
 
-        if (_travelled >= _maxRange)
+        if (travelled >= maxRange)
         {
             OnHit();
         }
@@ -53,8 +48,8 @@ public class VisualProjectile : MonoBehaviour, IProjectile
 
     public void OnHit()
     {
-        if (!_isActive) return;
-        _isActive = false;
-        PoolManager?.ReturnToPool(PoolType, gameObject);
+        if (!isActive) return;
+        isActive = false;
+        // pooling handled by ProjectileManager
     }
 }
