@@ -8,6 +8,7 @@ using Zenject;
 public enum PoolType
 {
     Enemy,
+    Projectile,
 }
 
 
