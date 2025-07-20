@@ -14,7 +14,7 @@ This document describes a simple, performance friendly projectile architecture u
 ```csharp
 public interface IProjectile
 {
-    void Initialize(Vector3 position, Vector3 direction, float speed, float maxRange);
+    void Initialize(Vector3 position, Vector3 direction, float speed, float maxRange, float damage);
     void Tick(float deltaTime);
     void OnHit();
     bool IsActive { get; }
@@ -34,4 +34,4 @@ Responsible for spawning projectiles. It requests a projectile instance from `IP
 
 ## Pool Integration
 
-`Shooter` obtains projectiles via `IPoolManager.GetFromPool`. Each `VisualProjectile` holds a reference to the pool manager so it can return itself back using `ReturnToPool` when it hits something or travels beyond its range.
+`Shooter` obtains projectiles via `IPoolManager.GetFromPool` and registers them with `ProjectileManager`. When a `VisualProjectile` reports a hit or reaches its range, `ProjectileManager` returns it to the pool.
