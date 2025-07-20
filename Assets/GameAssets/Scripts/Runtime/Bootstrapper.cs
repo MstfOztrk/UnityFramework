@@ -27,4 +27,5 @@ public class Bootstrapper : MonoBehaviour
         // Seçim logic'in burada
         return 0;
     }
+
 }

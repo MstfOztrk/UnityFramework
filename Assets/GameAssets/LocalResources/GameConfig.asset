@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37b65d2f4f8daa4085081e5bc29ae50, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  playerSpeed: 3
+  sensitivity: 10
+  clampMin: -4.5
+  clampMax: 4.5

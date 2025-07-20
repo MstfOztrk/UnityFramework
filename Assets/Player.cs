@@ -2,22 +2,21 @@ using UnityEngine;
 
 using Lean.Touch;
 using System.Collections.Generic;
-using Zenject;  // LeanTouch namespace'i
+using Zenject;
+using UniRx;  // LeanTouch namespace'i
 
 public class Player : MonoBehaviour
 {
+    [Inject] private IEventBus eventBus;
     [Inject] private GameConfig gameConfig;
     public Transform root;
-    private Vector3 targetPosition;
-    private Vector3 currentVelocity;
-    private bool isTouching = false;
-
-    private void Start()
+    private bool canSlide = true;
+    private void OnEnable()
     {
-        targetPosition = root.position;
+        Observable.EveryUpdate().Where(x=>canSlide).SkipUntil(eventBus.OnEvent(GameEvent.GameStart)).TakeUntil(eventBus.OnEvent(GameEvent.GameEnd)).Subscribe(_ => OnUpdate());
     }
 
-    private void Update()
+    private void OnUpdate()
     {
         LeanFinger activeFinger = null;
 
@@ -32,6 +31,7 @@ public class Player : MonoBehaviour
         }
 
         float moveDelta = 0f;
+        if (activeFinger == null) return;
         if (activeFinger.ScreenDelta != Vector2.zero)
         {
             moveDelta = activeFinger.ScreenDelta.x * gameConfig.sensitivity * gameConfig.playerSpeed * Time.deltaTime;
