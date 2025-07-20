@@ -8,6 +8,9 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.BindInterfacesAndSelfTo<LevelManager>().AsSingle().NonLazy();
+
+        var projectileManager = Container.InstantiateComponentOnNewGameObject<ProjectileManager>("ProjectileManager");
+        Container.Bind<ProjectileManager>().FromInstance(projectileManager).AsSingle().NonLazy();
     }
 
 }
