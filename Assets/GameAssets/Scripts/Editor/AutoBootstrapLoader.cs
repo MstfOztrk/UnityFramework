@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public static class AutoBootstrapLoader
 {
     private const string BootstrapperScenePath = "Assets/GameAssets/Scenes/Bootstrapper.unity";
-    private const string GameSceneName = "Game";
+    private const string GameSceneName = "Bootstrapper";
 
     static AutoBootstrapLoader()
     {
@@ -21,7 +21,7 @@ public static class AutoBootstrapLoader
         {
             var activeScene = SceneManager.GetActiveScene();
 
-            if (activeScene.name == GameSceneName)
+            if (activeScene.name != GameSceneName)
             {
                 EditorApplication.isPlaying = false;
                 EditorSceneManager.OpenScene(BootstrapperScenePath, OpenSceneMode.Single);

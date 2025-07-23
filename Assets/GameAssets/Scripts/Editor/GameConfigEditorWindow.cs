@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameConfigEditorWindow : EditorWindow
 {
     private GameConfig config;
-    private const string CONFIG_PATH = "Assets/GameAssets/LocalResources/GameConfig.asset";
+    private const string CONFIG_PATH = "Assets/GameAssets/Resources/GameConfig.asset";
     // Ctrl + T
     [MenuItem("Tools/Game Config %t")] 
     public static void ShowWindow()
